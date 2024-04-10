@@ -54,10 +54,10 @@ Alternatively, you can access the site hosted at [https://boxnovel.onrender.com]
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Landing/Form Page
-![Landing/Form Page](https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/landing-page.jpg)
+<img src="https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/landing-page.jpg" alt="Landing/Form Page" width="300">
 
 ## Download Page
-![Download Page](https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/download-page.jpg)
+<img src="https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/download-page.jpg" alt="Download Page" width="300">
 
 ## Video Demo
 ![Video Demo](https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/demo.mp4)
