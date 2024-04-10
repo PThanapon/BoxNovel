@@ -1,0 +1,4 @@
+Flask
+Gunicorn
+beutifulsoup4
+requests
