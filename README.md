@@ -7,7 +7,7 @@ This Flask web application allows users to download chapters from BoxNovel. User
 1. Clone this repository to your local machine:
 
     ```
-    git clone <repository-url>
+    git clone <[repository-url](https://github.com/PThanapon/BoxNovel)>
     ```
 
 2. Navigate to the project directory:
@@ -49,9 +49,6 @@ Alternatively, you can access the site hosted at [https://boxnovel.onrender.com]
 - Flask: A micro web framework for Python.
 - BeautifulSoup: A library for parsing HTML and XML documents.
 - Requests: An HTTP library for making requests to web servers.
-
-## Credits
-This project is based on the work of [pthanapon](https://github.com/pthanapon), who provided the initial implementation for downloading chapters from BoxNovel.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
