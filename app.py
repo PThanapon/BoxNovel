@@ -60,6 +60,23 @@ def download(title, chapter):
     </html>
     '''
 
+    # Determine the previous chapter
+    prev_chapter_link = f"{abv} chapter {chapter - 1}.html" if chapter > 1 else None
+
+    # Determine the next chapter
+    next_chapter_link = f"{abv} chapter {chapter + 1}.html"
+
+    # Create navigation buttons HTML with inline styles
+    nav_buttons_html = f"""
+    <div class="navigation" style="text-align: center; margin-top: 30px; padding-bottom: 20px;">
+        {'<button style="padding: 10px 20px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer; width: 150px;" onclick="location.href=/'' + {prev_chapter_link} + ''">Previous Chapter</button>' if prev_chapter_link else ''}
+        <button style="padding: 10px 20px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer; width: 150px;" onclick="location.href='{next_chapter_link}'">Next Chapter</button>
+    </div>
+    """
+    
+    # Insert navigation buttons HTML into the generated text
+    text = text.replace('</body>', f'{nav_buttons_html}</body>')
+
     # Create the folder if it doesn't exist
     folder_path = os.path.join(app.root_path, 'static', 'downloads', valid_title)
     if not os.path.exists(folder_path):
@@ -106,12 +123,22 @@ def download_chapter():
 
 @app.route('/download_page/<filename>')
 def download_page(filename):
-    # Render the download page with the download link
+    # Construct the download link
     download_link = url_for('static', filename=f'downloads/{filename}')
     return render_template('download.html', download_link=download_link)
 
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
+
+
+
+
+
+
+
+
+
 
 
 
