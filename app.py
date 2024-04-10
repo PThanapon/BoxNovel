@@ -36,7 +36,7 @@ def download(title, chapter):
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Wrapping Example</title>
+    <title>BoxNovel Downloader</title>
     <style>
         /* Apply CSS to ensure text wraps within a specific width */
         p {
@@ -59,24 +59,6 @@ def download(title, chapter):
     </body>
     </html>
     '''
-
-    # Determine the previous chapter
-    prev_chapter_link = f"{abv} chapter {chapter - 1}.html" if chapter > 1 else None
-
-    # Determine the next chapter
-    next_chapter_link = f"{abv} chapter {chapter + 1}.html"
-
-    # Create navigation buttons HTML with inline styles
-    nav_buttons_html = f"""
-    <div class="navigation" style="text-align: center; margin-top: 30px; padding-bottom: 20px;">
-        {'<button style="padding: 10px 20px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer; width: 150px;" onclick="location.href=/'' + {prev_chapter_link} + ''">Previous Chapter</button>' if prev_chapter_link else ''}
-        <button style="padding: 10px 20px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer; width: 150px;" onclick="location.href='{next_chapter_link}'">Next Chapter</button>
-    </div>
-    """
-    
-    # Insert navigation buttons HTML into the generated text
-    text = text.replace('</body>', f'{nav_buttons_html}</body>')
-
     # Create the folder if it doesn't exist
     folder_path = os.path.join(app.root_path, 'static', 'downloads', valid_title)
     if not os.path.exists(folder_path):
@@ -130,6 +112,15 @@ def download_page(filename):
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
+
+
+
+
+
+
+
+
+
 
 
 
