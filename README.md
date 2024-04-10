@@ -60,7 +60,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <img src="https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/download-page.jpg" alt="Download Page" width="300">
 
 ## Video Demo
-[Watch Video Demo](https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/demo.mp4)
+[Download Video Demo](https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/demo.mp4)
 
 
 
