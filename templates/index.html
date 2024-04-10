@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoxNovel Downloader</title>
+    <style>
+        /* Your CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+        /* Add loading animation styles */
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto; /* Center the loader */
+            display: none; /* Initially hidden */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Styles for icons */
+        .icon-container {
+            margin-top: 20px; /* Add margin-top to position below the download button */
+            text-align: center; /* Center align the icons */
+        }
+        .icon-container a {
+            text-decoration: none; /* Remove underline */
+        }
+        .icon-container img {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BoxNovel Downloader</h1>
+        <form id="downloadForm" action="/download" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required><br>
+            <label for="start">Start Chapter:</label>
+            <input type="number" id="start" name="start" required><br>
+            <label for="end">End Chapter:</label>
+            <input type="number" id="end" name="end" required><br><br>
+            <input type="submit" id="downloadButton" value="Download">
+            <!-- Add the loading animation -->
+            <div class="loader" id="loader"></div>
+        </form>
+        <!-- GitHub and Discord icons with links -->
+        <div class="icon-container">
+            <a href="https://github.com/pthanapon" target="_blank">
+                <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub">
+            </a>
+            <a href="https://discord.com/users/xbg." target="_blank">
+                <img src="https://static-00.iconduck.com/assets.00/discord-icon-2048x2048-nnt62s2u.png" alt="Discord">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("downloadForm").addEventListener("submit", function(event) {
+            // Show the loading animation when the form is submitted
+            document.getElementById("loader").style.display = "block";
+
+            // Prevent default form submission
+            event.preventDefault();
+
+            // Submit the form data via fetch
+            fetch('/download', {
+                method: 'POST',
+                body: new FormData(document.getElementById('downloadForm'))
+            })
+            .then(response => {
+                // If response is not OK, handle error
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        // Hide loading animation
+                        document.getElementById("loader").style.display = "none";
+                        // Show pop-up alert with error message
+                        alert(data.error);
+                        // Redirect back to the root ("/")
+                        window.location.href = "/";
+                    });
+                }
+                // If response is OK, proceed with form submission
+                return response.text();
+            })
+            .then(data => {
+                // If response contains data, submit the form
+                if (data) {
+                    // Hide loading animation
+                    document.getElementById("loader").style.display = "none";
+                    // Submit the form
+                    document.getElementById("downloadForm").submit();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Hide loading animation
+                document.getElementById("loader").style.display = "none";
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
