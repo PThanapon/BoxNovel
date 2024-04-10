@@ -55,13 +55,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Landing/Form Page
 <!-- Add description and possibly a screenshot of the landing/form page -->
-![Landing/Form Page](assets/landing-page.jpeg)
+![Landing/Form Page](demo/landing-page.jpeg)
 
 ## Download Page
 <!-- Add description and possibly a screenshot of the download page -->
-![Download Page](assets/example/download-page.jpeg)
+![Download Page](demo/download-page.jpeg)
 
 ## Video Demo
 <!-- Add a link to a video demonstration of the project -->
-[Video Demo](assets/example/demo-video.mp4)
+[Video Demo](demo/demo.mp4)
 
