@@ -60,6 +60,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <img src="https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/download-page.jpg" alt="Download Page" width="300">
 
 ## Video Demo
-[Watch Video Demo](https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/demo.mp4)
+
+<video width="640" height="360" controls>
+  <source src="https://raw.githubusercontent.com/PThanapon/BoxNovel/main/demo/demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 
