@@ -36,7 +36,7 @@ This Flask web application allows users to download chapters from BoxNovel. User
 4. Once the download is complete, click the provided download link to get the ZIP file containing the chapters.
 
 ### Alternative Usage
-Alternatively, you can access the site hosted at [https://boxnovel.onrender.com](https://boxnovel.onrender.com) and follow the same steps as described above.
+Alternatively, you can access the site hosted at [https://boxnovel.onrender.com](https://boxnovel.onrender.com) and follow the same steps as described above. Note that the site may take awhile too load due Render.com spin down after inactivity.
 
 ## Files
 - `app.py`: This file contains the Flask application code which handles the routing and downloading of chapters.
