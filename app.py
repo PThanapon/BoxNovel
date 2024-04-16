@@ -8,12 +8,20 @@ import zipfile
 app = Flask(__name__)
 
 # Your existing functions and routes
-def download(title, chapter):
-    valid_title = re.sub(r'[\\/:*?"\'\’\%<>|]', '', title)
-    link_title = "-".join(word for word in valid_title.split())
+def download(title, chapter, link):
+    global valid_title
 
-    abv = "".join(word[0].upper() for word in valid_title.split())
-    url = f"https://boxnovel.com/novel/{link_title}/chapter-{chapter}"
+    valid_title = re.sub(r'[\\/:*?"\'\’\%<>|]', '', title)
+
+    if not link:
+        link_title = "-".join(word for word in valid_title.split())
+        abv = "".join(word[0].upper() for word in valid_title.split())
+        url = f"https://boxnovel.com/novel/{link_title}/chapter-{chapter}"
+    else:
+        link_title = title[title.index("boxnovel") + 19: -1]
+        abv = "".join(word[0].upper() for word in link_title.split("-"))
+        url = f"{title}/chapter-{chapter}/"
+        valid_title = re.sub(r"\-", " ", link_title)
 
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
@@ -65,9 +73,14 @@ def download(title, chapter):
         os.makedirs(folder_path)
 
     # Write the text to a text file inside the folder
-    file_path = os.path.join(folder_path, f'{abv} chapter {chapter}.html')
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(text)
+    try:
+        print(app.root_path, folder_path, valid_title)
+        file_path = os.path.join(folder_path, f'{abv} chapter {chapter}.html')
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(text)
+    except:
+        print(folder_path, file_path)
+        quit()
 
     return file_path
 
@@ -81,9 +94,14 @@ def download_chapter():
     start = int(request.form['start'])
     end = int(request.form['end'])
     
+    if title.startswith("https") or title.endswith(r"/"):
+        link = True
+    else:
+        link = False
+
     file_paths = []
     for i in range(start, end+1):
-        file_path = download(title, i)
+        file_path = download(title, i, link)
         if file_path:
             file_paths.append(file_path)
         else:
@@ -91,7 +109,7 @@ def download_chapter():
             return jsonify({'error': 'Failed to download any chapter. Novel cannot be found.'}), 404
     
     if file_paths:
-        zip_filename = f"{title}_chapters_{start}_to_{end}.zip"
+        zip_filename = f"{valid_title}_chapters_{start}_to_{end}.zip"
         zip_path = os.path.join(app.root_path, 'static', 'downloads', zip_filename)
         with zipfile.ZipFile(zip_path, 'w') as zipf:
             for file_path in file_paths:
@@ -112,23 +130,6 @@ def download_page(filename):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
