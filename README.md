@@ -3,25 +3,6 @@
 ## Description
 This Flask web application allows users to download chapters from BoxNovel. Users can specify the title of the novel, starting and ending chapter numbers, and the application will generate a downloadable ZIP file containing HTML files for each chapter.
 
-## Installation
-1. Clone this repository to your local machine:
-
-    ```
-    git clone <[repository-url](https://github.com/PThanapon/BoxNovel)>
-    ```
-
-2. Navigate to the project directory:
-
-    ```
-    cd BoxNovel
-    ```
-
-3. Install the required dependencies:
-
-    ```
-    pip install -r requirements.txt
-    ```
-
 ## Usage
 1. Run the Flask application:
 
